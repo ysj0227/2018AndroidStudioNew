@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="facevoice.android.com.facevoiceapplication.MainActivity">
+
+    <facevoice.android.com.facevoiceapplication.circle.CircleProgressBar xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/circle_progressBar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:borderColor="@color/colorPrimary"
+        app:borderVisible="true"
+        app:bordersWidth="1dp"
+        app:progress="0"
+        app:progressColor="@color/colorAccent"
+        app:progressWidth="8dp"
+        app:textColor="@color/colorPrimaryDark"
+        app:textSize="14sp"
+        app:textVisible="false"
+        app:useCenter="true" />
+
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
+    <Button
+        android:id="@+id/btnGlide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Glide加载" />
+
+    <Button
+        android:id="@+id/btnPicasso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Picasso加载" />
+
+    <Button
+        android:id="@+id/buttonAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="增" />
+
+    <!--<Button-->
+    <!--android:id="@+id/button2"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="删" />-->
+
+    <!--<Button-->
+    <!--android:id="@+id/button3"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="改" />-->
+
+    <Button
+        android:id="@+id/buttonQuery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="查" />
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floating_button"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="right"
+        app:elevation="0dp" />
+
+</LinearLayout>
