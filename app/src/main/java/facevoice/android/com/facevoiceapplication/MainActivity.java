@@ -19,6 +19,9 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import facevoice.android.com.facevoiceapplication.db.DbManager;
+import facevoice.android.com.facevoiceapplication.db.SutdentDaoOpe;
+import facevoice.android.com.facevoiceapplication.entity.Student;
 import facevoice.android.com.facevoiceapplication.utils.AESUtil;
 
 public class MainActivity extends Activity {
@@ -26,36 +29,76 @@ public class MainActivity extends Activity {
     String imageUri = "http://pic5.photophoto.cn/20071020/0034034881477679_b.jpg";
     String gifUrl = "http://p1.pstatp.com/large/166200019850062839d3";
 
-    private int aa=0;
+    private int aa = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.i("TAG", "*************************************");
-        Log.i("TAG", AESUtil.getAESEncode("000000"));
-        Log.i("TAG", AESUtil.getDecodeString(AESUtil.getAESEncode("000000")));
-
-
-//        Button add = findViewById(R.id.buttonAdd);
-//        Button query = findViewById(R.id.buttonQuery);
-//
-//        add.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
-//
-//        query.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
-
+//        Log.i("TAG", "*************************************");
+//        Log.i("TAG", AESUtil.getAESEncode("000000"));
+//        Log.i("TAG", AESUtil.getDecodeString(AESUtil.getAESEncode("000000")));
+        greenDao();
 
     }
+
+    //数据库
+    private void greenDao() {
+        Button add = findViewById(R.id.buttonAdd);
+        Button buttonDelete = findViewById(R.id.buttonDelete);
+        Button buttonFix = findViewById(R.id.buttonFix);
+        Button query = findViewById(R.id.buttonQuery);
+
+        final List<Student> list=new ArrayList<>();
+
+        for (int i = 0; i < 5; i++) {
+            Student student=new Student((long)i,"ysj",i,"88","type");
+            list.add(student);
+        }
+
+
+        //增
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SutdentDaoOpe.insertData(MainActivity.this,list);
+            }
+        });
+        //删
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Student student = new Student((long) 5, "haung" + 5, 25,"123456");
+//                /**
+//                 * 根据特定的对象删除
+//                 */
+//                StudentDaoOpe.deleteData(this, student);
+                /**
+                 * 根据主键删除
+                 */
+                SutdentDaoOpe.deleteByKeyData(MainActivity.this, 4);
+//                StudentDaoOpe.deleteAllData(this);
+            }
+        });
+        //改
+        buttonFix.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        //查
+        query.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+             List<Student> ls=SutdentDaoOpe.queryAll(MainActivity.this);
+                for (int i = 0; i < ls.size(); i++) {
+                    Log.i("TAG",ls.get(i).getId()+" *** "+ls.get(i).getName());
+                }
+            }
+        });
+    }
+
 
 //    private void loadPicture() {
 //        final ImageView imageView = findViewById(R.id.image);
@@ -94,52 +137,36 @@ public class MainActivity extends Activity {
 //        });
 //    }
 
-    private void xiancehng() {
-        ExecutorService newSingle = Executors.newSingleThreadExecutor();
-        newSingle.execute(new Runnable() {
-            @Override
-            public void run() {
-                Log.i("TAG", "*************");
-            }
-        });
-
-        newSingle.submit(new Runnable() {
-            @Override
-            public void run() {
-                Log.i("TAG", "###############");
-            }
-        });
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.i("TAG", "*************onStart()    ");
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.i("TAG", "*************onRestart()    ");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.i("TAG", "*************onResume()    ");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.i("TAG", "*************onPause()");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.i("TAG", "################ onDestroy()");
-    }
+//
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        Log.i("TAG", "*************onStart()    ");
+//    }
+//
+//    @Override
+//    protected void onRestart() {
+//        super.onRestart();
+//        Log.i("TAG", "*************onRestart()    ");
+//    }
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        Log.i("TAG", "*************onResume()    ");
+//    }
+//
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        Log.i("TAG", "*************onPause()");
+//    }
+//
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        Log.i("TAG", "################ onDestroy()");
+//    }
 
 //    @Override
 //    protected void onSaveInstanceState(Bundle outState) {
@@ -153,11 +180,5 @@ public class MainActivity extends Activity {
 //        super.onRestoreInstanceState(savedInstanceState);
 //        Log.i("TAG", "*************onRestoreInstanceState()");
 //    }
-
-
-    private void test(){
-        List<String> list= new ArrayList<>();
-        List<String> list1=new LinkedList<>();
-    }
 
 }

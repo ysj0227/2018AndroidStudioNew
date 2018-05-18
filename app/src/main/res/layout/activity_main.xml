@@ -47,17 +47,17 @@
         android:layout_height="wrap_content"
         android:text="增" />
 
-    <!--<Button-->
-    <!--android:id="@+id/button2"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="删" />-->
+    <Button
+        android:id="@+id/buttonDelete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="删" />
 
-    <!--<Button-->
-    <!--android:id="@+id/button3"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="改" />-->
+    <Button
+        android:id="@+id/buttonFix"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="改" />
 
     <Button
         android:id="@+id/buttonQuery"
